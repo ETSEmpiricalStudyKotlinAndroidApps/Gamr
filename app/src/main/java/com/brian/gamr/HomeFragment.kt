@@ -18,7 +18,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +58,10 @@ class HomeFragment : Fragment() {
         val adapter = GameAdapter(gameList)
         binding.topRatedRecyclerView.adapter = adapter
         binding.topRatedRecyclerView.layoutManager =
+            LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
+
+        binding.playStationRecyclerView.adapter = adapter
+        binding.playStationRecyclerView.layoutManager =
             LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
 
     }
