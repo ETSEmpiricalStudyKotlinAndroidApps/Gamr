@@ -1,12 +1,15 @@
 package com.brian.gamr
 
 import android.os.Bundle
+
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.brian.gamr.databinding.FragmentHomeBinding
-import com.denzcoskun.imageslider.constants.ScaleTypes
+
 import com.denzcoskun.imageslider.models.SlideModel
 
 class HomeFragment : Fragment() {
@@ -15,16 +18,16 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-
         // Inflate the layout for this fragment
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        //create an imageList as an array
+        //bind the imageSlider view and attach the images.
         val imageSlider = binding.imageSlider
         val imageList = ArrayList<SlideModel>()
 
@@ -37,6 +40,26 @@ class HomeFragment : Fragment() {
         imageSlider.setImageList(imageList)
 
         return binding.root
+        //Initialize the card elements here- for trial
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var gameList = mutableListOf(
+            Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%"),
+            Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%"),
+            Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%"),
+            Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%"),
+            Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%")
+        )
+
+
+        val adapter = GameAdapter(gameList)
+        binding.topRatedRecyclerView.adapter = adapter
+        binding.topRatedRecyclerView.layoutManager =
+            LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
 
     }
 
