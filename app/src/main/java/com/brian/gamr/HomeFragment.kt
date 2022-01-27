@@ -46,6 +46,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //create an instance of gameList
         var gameList = mutableListOf(
             Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%"),
             Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%"),
@@ -54,12 +55,14 @@ class HomeFragment : Fragment() {
             Card(R.drawable.apex, "Apex Legends", "Best battle Royale game", "90%")
         )
 
-
+        //connect to the adapter
         val adapter = GameAdapter(gameList)
+        //First recyclerView
         binding.topRatedRecyclerView.adapter = adapter
         binding.topRatedRecyclerView.layoutManager =
             LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
 
+        //Second RecyclerView for Playstation
         binding.playStationRecyclerView.adapter = adapter
         binding.playStationRecyclerView.layoutManager =
             LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false)
